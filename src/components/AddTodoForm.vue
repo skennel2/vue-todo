@@ -33,10 +33,7 @@
             },
             clearInput : function(){
                 this.newTodo = ''            
-            },
-            toggleShow : function(){
-                this.isShow = !this.isShow;
-            },
+            }
         }
     }
 </script>
