@@ -1,23 +1,30 @@
 <template>
 
   <div id="app">
-    <h1>{{ msg }}</h1>
-    <TestComponent></TestComponent>
+    <AddTodoFormVue v-on:addTodo="addTodo"></AddTodoFormVue>
+    <TodoListVue v-bind:list="todoItems"></TodoListVue>
   </div>
 
 </template>
 
 <script>
-  import TestComponent from './components/TestComponent.vue';
+  import AddTodoFormVue from './components/AddTodoForm.vue';
+  import TodoListVue from './components/TodoList.vue';
 
   export default {
     name: 'app',
     components : {
-      'TestComponent' : TestComponent
+      'AddTodoFormVue' : AddTodoFormVue,
+      'TodoListVue' : TodoListVue
     },
     data () {
       return {
-        msg: 'Hello World!!'
+        todoItems: []
+      }
+    },
+    methods: {
+      addTodo : function(newItem){
+        this.todoItems.push(newItem);
       }
     }
   }
