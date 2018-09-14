@@ -15,8 +15,10 @@
         },
         methods : {
             addTodo : function(){
-                this.$emit('addTodo', this.newTodo)
-                this.clearInput();
+                if(this.newTodo.length != 0){
+                    this.$emit('addTodo', this.newTodo)
+                    this.clearInput();
+                }
             },
             clearInput : function(){
                 this.newTodo = ''
