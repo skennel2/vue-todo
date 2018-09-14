@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="input-group" v-show="isShow">
+        <div class="input-group">
             <input type="text" v-model="newTodo" class="form-control" />
 
             <span class="input-group-btn">
@@ -15,16 +15,16 @@
     export default {
         data(){
             return{
-                newTodo : '',
-                isShow : true
+                newTodo : ''
             }
         },
         methods : {
             addTodo : function(){
                 if(this.newTodo.length != 0){
-                    var newTodoObj = {
+                    var newTodoObj = {                        
                         todo : this.newTodo,
-                        createdDate : new Date()
+                        createdDate : new Date(),
+                        isSuccess : false
                     };
 
                     this.$emit('addTodo', newTodoObj)

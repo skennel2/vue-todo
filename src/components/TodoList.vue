@@ -1,10 +1,12 @@
 <template>
     <div class="row">
         <div class="list-group">
-            <div v-for = "(item, index) in list" class="list-group-item" @click="clickItem(index)">           
+            <div class="list-group-item" v-for = "(item, index) in list" :key = "item.todo">  <!-- TODO key is abailable duplicated -->         
                 <TodoItemVue v-bind:todoItem="item"
                              v-bind:index="index"
-                             v-on:onChangeValue="onItemValueChange"></TodoItemVue>                             
+                             
+                             @onChangeValue="itemValueChange"
+                             @onDeleteItem="deleteItem"></TodoItemVue>                             
             </div>
             
         </div>
@@ -22,16 +24,15 @@
         },
         data () {
             return {
-                isEditMode : false,
             }
         },        
         methods : {
-            clickItem : function(index){
-                this.isEditMode = true;
+            itemValueChange : function(idx, oldObject, newObject){
+                this.$emit('onItemValueChange', idx, oldObject, newObject);                
             },
-            onItemValueChange : function(idx, oldObject, newObject){
-                console.log(newObject);
-            }        
+            deleteItem : function(index){
+                this.$emit("onDeleteItem", index);
+            }  
         },
         components : {
             'TodoItemVue' : TodoItemVue

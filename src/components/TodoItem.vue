@@ -1,15 +1,19 @@
 <template>
 
-    <div  class="row">
+    <div class="row">
         <div v-show="!isEditMode" @click="setEditMode">
             {{todoItem.todo}}
         </div>
-
+        
         <div class="input-group" v-show="isEditMode">
             <input type="text"  class="form-control" v-model="editValue">
             <span class="input-group-btn">
-                <button @click="onClickOk" class="btn btn-primary">ok</button>
-                <button @click="onClickCancle" class="btn btn-primary">cancle</button>
+                <button @click="toggleFinish" class="btn btn-default">toggleFinish</button>
+                <button @click="onClickOk" class="btn btn-default">ok</button>
+                <button @click="onClickCancle"
+                        class="btn btn-default">cancle</button>
+                <button @click="onClickDelete"
+                        class="btn btn-danger">delete</button>                        
             </span>
         </div>     
     </div>
@@ -28,7 +32,7 @@
         data () {
             return {
                 isEditMode : false,
-                editValue : this.todoItem.todo
+                editValue : this.todoItem.todo                
             }
         },
         methods : {
@@ -37,6 +41,12 @@
             },
             setViewMode : function(){
                 this.isEditMode = false;
+            },
+            toggleFinish : function(){
+                var tempTodoItem = this.todoItem;
+                tempTodoItem.isFinished = !this.todoItem.isFinished;
+
+                this.$emit('onChangeValue', this.index, this.todoItem, tempTodoItem)
             },
             onClickOk : function(){
                 if(this.editValue.length != 0){
@@ -53,6 +63,9 @@
             onClickCancle : function(){                          
                 this.setViewMode();
                 this.editValue = this.todoItem.todo;
+            },
+            onClickDelete : function(){
+                this.$emit('onDeleteItem', this.index)                
             }
         }
     }

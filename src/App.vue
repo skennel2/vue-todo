@@ -1,8 +1,11 @@
 <template>
-
+  
   <div id="app" class = "container">
+    <br>
     <AddTodoFormVue @addTodo="addTodo"></AddTodoFormVue>
-    <TodoListVue v-bind:list="todoItems"></TodoListVue>
+    <TodoListVue v-bind:list="todoItems" 
+                 @onDeleteItem="deleteItem"
+                 @onItemValueChange='itemValueChange'></TodoListVue>
   </div>
 
 </template>
@@ -23,8 +26,17 @@
       }
     },
     methods: {
-      addTodo : function(newItem){
+      addTodo : function(newItem){        
         this.todoItems.push(newItem);
+      },
+      deleteItem : function(idx){
+        this.todoItems.splice(idx, 1);
+      },
+      itemValueChange : function(idx, oldObject, newObject){
+        var original = this.todoItems[idx];
+        original.todo = newObject.todo;
+        original.createdDate = newObject.createdDate;
+        original.isFinished = newObject.isFinished;
       }
     }
   }
