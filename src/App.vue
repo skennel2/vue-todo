@@ -4,8 +4,8 @@
     <br>
     <AddTodoFormVue @addTodo="addTodo"></AddTodoFormVue>
     <TodoListVue v-bind:list="todoItems" 
-                 @onDeleteItem="deleteItem"
-                 @onItemValueChange='itemValueChange'></TodoListVue>
+                 @onDeleteItem="deleteTodo"
+                 @onItemValueChange='changeTodo'></TodoListVue>
   </div>
 
 </template>
@@ -29,10 +29,10 @@
       addTodo : function(newItem){        
         this.todoItems.push(newItem);
       },
-      deleteItem : function(idx){
+      deleteTodo : function(idx){
         this.todoItems.splice(idx, 1);
       },
-      itemValueChange : function(idx, oldObject, newObject){
+      changeTodo : function(idx, oldObject, newObject){
         var original = this.todoItems[idx];
         original.todo = newObject.todo;
         original.createdDate = newObject.createdDate;
