@@ -1,21 +1,24 @@
 <template>
 
     <div class="row">
-        <div v-show="!isEditMode" @click="setEditMode">
-            {{todoItem.todo}}
-        </div>
-        
-        <div class="input-group" v-show="isEditMode">
-            <input type="text"  class="form-control" v-model="editValue">
-            <span class="input-group-btn">
-                <button @click="toggleFinish" class="btn btn-default">toggleFinish</button>
-                <button @click="onClickOk" class="btn btn-default">ok</button>
-                <button @click="onClickCancle"
-                        class="btn btn-default">cancle</button>
-                <button @click="onClickDelete"
-                        class="btn btn-danger">delete</button>                        
-            </span>
-        </div>     
+        <div class="glyphicon glyphicon-ok" aria-hidden="true" v-show="isFinished"></div>
+        <div>
+            <div v-show="!isEditMode" @click="setEditMode">
+                {{todoItem.todo}}
+            </div>
+            
+            <div class="input-group" v-show="isEditMode">
+                <input type="text"  class="form-control" v-model="editValue">
+                <span class="input-group-btn">
+                    <button @click="toggleFinish" class="btn btn-default">toggleFinish</button>
+                    <button @click="onClickOk" class="btn btn-default">ok</button>
+                    <button @click="onClickCancle"
+                            class="btn btn-default">cancle</button>
+                    <button @click="onClickDelete"
+                            class="btn btn-danger">delete</button>                        
+                </span>
+            </div>
+        </div> 
     </div>
 </template>
 
@@ -32,7 +35,8 @@
         data () {
             return {
                 isEditMode : false,
-                editValue : this.todoItem.todo                
+                isFinished : this.todoItem.isFinished,
+                editValue : this.todoItem.todo                         
             }
         },
         methods : {
@@ -43,8 +47,10 @@
                 this.isEditMode = false;
             },
             toggleFinish : function(){
+                this.isFinished = !this.isFinished;
+
                 var tempTodoItem = this.todoItem;
-                tempTodoItem.isFinished = !this.todoItem.isFinished;
+                tempTodoItem.isFinished = this.isFinished;
 
                 this.$emit('onChangeValue', this.index, this.todoItem, tempTodoItem)
             },
