@@ -1,7 +1,7 @@
 <template>
 
     <div class="row">
-        <div class="glyphicon glyphicon-ok" aria-hidden="true" v-show="isFinished"></div>
+        <div class="glyphicon glyphicon-ok" aria-hidden="true" v-show="isFinished" @click="toggleFinish"></div>
         <div>
             <div v-show="!isEditMode" @click="setEditMode">
                 {{todoItem.todo}}
@@ -50,9 +50,13 @@
                 this.isFinished = !this.isFinished;
 
                 var tempTodoItem = this.todoItem;
+                tempTodoItem.todo = this.editValue,
                 tempTodoItem.isFinished = this.isFinished;
+                tempTodoItem.createdDate = new Date();
+                
+                this.$emit('onChangeValue', this.index, this.todoItem, tempTodoItem);
 
-                this.$emit('onChangeValue', this.index, this.todoItem, tempTodoItem)
+                this.setViewMode(); 
             },
             onClickOk : function(){
                 if(this.editValue.length != 0){
