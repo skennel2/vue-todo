@@ -20,11 +20,7 @@
             list : {
                 type : Array                
             }
-        },
-        data () {
-            return {
-            }
-        },        
+        },    
         methods : {
             itemValueChange : function(idx, oldObject, newObject){
                 this.$emit('onItemValueChange', idx, oldObject, newObject);                

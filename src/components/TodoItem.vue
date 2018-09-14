@@ -1,5 +1,4 @@
 <template>
-
     <div class="row">
         <div class="glyphicon glyphicon-ok" aria-hidden="true" v-show="isFinished" @click="toggleFinish"></div>
         <div>
@@ -11,10 +10,10 @@
                 <input type="text"  class="form-control" v-model="editValue">
                 <span class="input-group-btn">
                     <button @click="toggleFinish" class="btn btn-default">toggleFinish</button>
-                    <button @click="onClickOk" class="btn btn-default">ok</button>
-                    <button @click="onClickCancle"
+                    <button @click="saveChanges" class="btn btn-default">ok</button>
+                    <button @click="cancleChanges"
                             class="btn btn-default">cancle</button>
-                    <button @click="onClickDelete"
+                    <button @click="deleteTodoItem"
                             class="btn btn-danger">delete</button>                        
                 </span>
             </div>
@@ -53,12 +52,12 @@
                 tempTodoItem.todo = this.editValue,
                 tempTodoItem.isFinished = this.isFinished;
                 tempTodoItem.createdDate = new Date();
-                
+
                 this.$emit('onChangeValue', this.index, this.todoItem, tempTodoItem);
 
                 this.setViewMode(); 
             },
-            onClickOk : function(){
+            saveChanges : function(){
                 if(this.editValue.length != 0){
                     if(this.editValue != this.todoItem.todo){
                         this.$emit('onChangeValue', this.index, this.todoItem, {
@@ -70,11 +69,11 @@
 
                 this.setViewMode();                
             },
-            onClickCancle : function(){                          
+            cancleChanges : function(){                          
                 this.setViewMode();
                 this.editValue = this.todoItem.todo;
             },
-            onClickDelete : function(){
+            deleteTodoItem : function(){
                 this.$emit('onDeleteItem', this.index)                
             }
         }
