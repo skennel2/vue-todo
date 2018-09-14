@@ -1,18 +1,15 @@
 <template>
-
-    <div>This is Component</div>
-
+    <div>
+    
+    </div>
 </template>
 
 <script>
-
     export default {
-        
-    }
 
+    }
 </script>
 
 <style>
 
 </style>
-

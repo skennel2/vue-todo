@@ -8,23 +8,23 @@
 </template>
 
 <script>
-import TestComponent from './components/TestComponent.vue';
+  import TestComponent from './components/TestComponent.vue';
 
-export default {
-  name: 'app',
-  components : {
-    'TestComponent' : TestComponent
-  },
-  data () {
-    return {
-      msg: 'Hello World!!'
+  export default {
+    name: 'app',
+    components : {
+      'TestComponent' : TestComponent
+    },
+    data () {
+      return {
+        msg: 'Hello World!!'
+      }
     }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
 </style>
