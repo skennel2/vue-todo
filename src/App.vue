@@ -1,7 +1,7 @@
 <template>
 
   <div id="app" class = "container">
-    <AddTodoFormVue v-on:addTodo="addTodo"></AddTodoFormVue>
+    <AddTodoFormVue @addTodo="addTodo"></AddTodoFormVue>
     <TodoListVue v-bind:list="todoItems"></TodoListVue>
   </div>
 

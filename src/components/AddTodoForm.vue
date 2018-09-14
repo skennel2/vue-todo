@@ -1,21 +1,22 @@
 <template>
-    <div class = "row">
-        <div class = "input-group">
-            <input type = "text" v-model = "newTodo" class = "form-control"/>
-            
-             <span class="input-group-btn">
-                <button @click = "addTodo" class = "btn btn-primary">add</button>
-                <button @click = "clearInput" class = "btn btn-primary">clear</button>
-             </span>
+    <div class="row">
+        <div class="input-group" v-show="isShow">
+            <input type="text" v-model="newTodo" class="form-control" />
+
+            <span class="input-group-btn">
+                <button @click="addTodo" class="btn btn-primary">add</button>
+                <button @click="clearInput" class="btn btn-primary">clear</button>
+            </span>
         </div>
-    </div>
+    </div>    
 </template>
 
 <script>
     export default {
         data(){
             return{
-                newTodo : ''
+                newTodo : '',
+                isShow : true
             }
         },
         methods : {
@@ -32,7 +33,10 @@
             },
             clearInput : function(){
                 this.newTodo = ''            
-            }
+            },
+            toggleShow : function(){
+                this.isShow = !this.isShow;
+            },
         }
     }
 </script>
