@@ -1,7 +1,7 @@
 <template>
     <ul>
-        <li v-for = "(todo, index) in list">
-            {{todo}}
+        <li v-for = "(item, index) in list">
+            {{item.todo}}
         </li>
     </ul>
 </template>

@@ -1,8 +1,13 @@
 <template>
-    <div>
-        <input type="text" v-model="newTodo"/>
-        <button @click="addTodo">add</button>
-        <button @click="clearInput">clear</button>
+    <div class = "row">
+        <div class = "input-group">
+            <input type = "text" v-model = "newTodo" class = "form-control"/>
+            
+             <span class="input-group-btn">
+                <button @click = "addTodo" class = "btn btn-primary">add</button>
+                <button @click = "clearInput" class = "btn btn-primary">clear</button>
+             </span>
+        </div>
     </div>
 </template>
 
@@ -16,12 +21,17 @@
         methods : {
             addTodo : function(){
                 if(this.newTodo.length != 0){
-                    this.$emit('addTodo', this.newTodo)
+                    var newTodoObj = {
+                        todo : this.newTodo,
+                        createdDate : new Date()
+                    };
+
+                    this.$emit('addTodo', newTodoObj)
                     this.clearInput();
                 }
             },
             clearInput : function(){
-                this.newTodo = ''
+                this.newTodo = ''            
             }
         }
     }
