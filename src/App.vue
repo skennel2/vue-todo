@@ -3,10 +3,10 @@
   <div id="app" class = "container">
     <br>
     <AddTodoFormVue @addTodo="addTodo"></AddTodoFormVue>
-    <TodoListVue v-bind:list="todoItems" 
+    <TodoListVue v-bind:todoList="todoList" 
                  @onDeleteItem="deleteTodo"
                  @onItemValueChange='changeTodo'></TodoListVue>
-    <TodoSummuryVue v-bind:list="todoItems"></TodoSummuryVue>                
+    <TodoSummuryVue v-bind:todoList="todoList"></TodoSummuryVue>                
   </div>
 
 </template>
@@ -25,18 +25,18 @@
     },
     data () {
       return {
-        todoItems: []
+        todoList: []
       }
     },
     methods: {
       addTodo : function(newItem){        
-        this.todoItems.push(newItem);
+        this.todoList.push(newItem);
       },
       deleteTodo : function(idx){
-        this.todoItems.splice(idx, 1);
+        this.todoList.splice(idx, 1);
       },
       changeTodo : function(idx, oldObject, newObject){
-        var original = this.todoItems[idx];
+        var original = this.todoList[idx];
         original.todo = newObject.todo;
         original.modifiedDate = newObject.modifiedDate;
         original.isFinished = newObject.isFinished;

@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="list-group">
-            <div class="list-group-item" v-for = "(item, index) in list" :key = "item.todo">  <!-- TODO key is abailable duplicated -->         
+            <div class="list-group-item" v-for = "(item, index) in todoList" :key = "item.todo">  <!-- TODO key is abailable duplicated -->         
                 <TodoItemVue v-bind:todoItem="item"
                              v-bind:index="index"
                              @onChangeValue="itemValueChange"

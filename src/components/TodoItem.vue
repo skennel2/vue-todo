@@ -1,22 +1,23 @@
 <template>
     <div class="row">
-        <div class="glyphicon glyphicon-ok" aria-hidden="true" v-show="isFinished" @click="toggleFinish"></div>
         <div>
-            <div v-show="!isEditMode" @click="setEditMode">
+            <span class="glyphicon" 
+                  v-bind:class = "{'glyphicon-ok finished' : isFinished, 'glyphicon-minus notFinished' : !isFinished}"
+                  aria-hidden="true" 
+                  @click="toggleFinish"></span>    
+            <span v-show="!isEditMode" @click="setEditMode">
                 {{todoItem.todo}}
-            </div>
+            </span>
             
-            <div class="input-group" v-show="isEditMode">
+            <span class="input-group" v-show="isEditMode">
                 <input type="text"  class="form-control" v-model="editValue">
                 <span class="input-group-btn">
-                    <button @click="toggleFinish" class="btn btn-default">toggleFinish</button>
                     <button @click="saveChanges" class="btn btn-default">ok</button>
                     <button @click="cancleChanges"
-                            class="btn btn-default">cancle</button>
-                    <button @click="deleteItem"
-                            class="btn btn-danger">delete</button>                        
+                            class="btn btn-default">cancle</button>                       
                 </span>
-            </div>
+            </span>
+            <span class="glyphicon glyphicon-remove danger" @click="deleteItem"></span> 
         </div> 
     </div>
 </template>
@@ -82,5 +83,13 @@
 </script>
 
 <style>
-
+    .finished {
+        color : cornflowerblue
+    }
+    .notFinished {
+        color : gray
+    }
+    .danger {
+        color : crimson
+    }
 </style>
