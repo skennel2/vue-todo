@@ -13,7 +13,7 @@
                     <button @click="saveChanges" class="btn btn-default">ok</button>
                     <button @click="cancleChanges"
                             class="btn btn-default">cancle</button>
-                    <button @click="deleteTodoItem"
+                    <button @click="deleteItem"
                             class="btn btn-danger">delete</button>                        
                 </span>
             </div>
@@ -51,7 +51,7 @@
                 var tempTodoItem = this.todoItem;
                 tempTodoItem.todo = this.editValue,
                 tempTodoItem.isFinished = this.isFinished;
-                tempTodoItem.createdDate = new Date();
+                tempTodoItem.modifiedDate = new Date();
 
                 this.$emit('onChangeValue', this.index, this.todoItem, tempTodoItem);
 
@@ -61,9 +61,9 @@
                 if(this.editValue.length != 0){
                     if(this.editValue != this.todoItem.todo){
                         this.$emit('onChangeValue', this.index, this.todoItem, {
-                            todo : this.editValue,
-                            createdDate : new Date(),
-                            isFinished : this.isFinished
+                            todo : this.editValue,                            
+                            isFinished : this.isFinished,
+                            modifiedDate : new Date(),
                         });
                     }
                 }
@@ -74,7 +74,7 @@
                 this.setViewMode();
                 this.editValue = this.todoItem.todo;
             },
-            deleteTodoItem : function(){
+            deleteItem : function(){
                 this.$emit('onDeleteItem', this.index)                
             }
         }

@@ -38,7 +38,7 @@
       changeTodo : function(idx, oldObject, newObject){
         var original = this.todoItems[idx];
         original.todo = newObject.todo;
-        original.createdDate = newObject.createdDate;
+        original.modifiedDate = newObject.modifiedDate;
         original.isFinished = newObject.isFinished;
       }
     }

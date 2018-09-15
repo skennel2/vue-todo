@@ -1,8 +1,8 @@
 <template>
     <div id="summary_container">
-        <div>요약</div>
-        <span>Finished : {{getFinishedCount}}</span>
-        <span>NotFinished : {{getNotFinishedCount}}</span>
+        <a href="#">Total <span class="badge">{{getTotalCount}}</span></a>
+        <a href="#">Finished <span class="badge">{{getFinishedCount}}</span></a>
+        <a href="#">NotFinished <span class="badge">{{getNotFinishedCount}}</span></a>
     </div>
 </template>
 
@@ -14,8 +14,10 @@
             }
         },
         computed : {
+            getTotalCount : function(){
+                return this.list.length;
+            },
             getFinishedCount : function (){
-                console.log(this.list)
                 return this.list.filter((i)=>{
                     return i.isFinished;
                 }).length;
