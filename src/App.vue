@@ -6,6 +6,8 @@
     <TodoListVue v-bind:list="todoItems" 
                  @onDeleteItem="deleteTodo"
                  @onItemValueChange='changeTodo'></TodoListVue>
+    <TodoSummuryVue v-bind:list="todoItems">
+    </TodoSummuryVue>                
   </div>
 
 </template>
@@ -13,12 +15,14 @@
 <script>
   import AddTodoFormVue from './components/AddTodoForm.vue';
   import TodoListVue from './components/TodoList.vue';
+  import TodoSummuryVue from './components/TodoSummury.vue';
 
   export default {
     name: 'app',
     components : {
       'AddTodoFormVue' : AddTodoFormVue,
-      'TodoListVue' : TodoListVue
+      'TodoListVue' : TodoListVue,
+      'TodoSummuryVue' : TodoSummuryVue
     },
     data () {
       return {
