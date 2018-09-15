@@ -6,8 +6,7 @@
     <TodoListVue v-bind:list="todoItems" 
                  @onDeleteItem="deleteTodo"
                  @onItemValueChange='changeTodo'></TodoListVue>
-    <TodoSummuryVue v-bind:list="todoItems">
-    </TodoSummuryVue>                
+    <TodoSummuryVue v-bind:list="todoItems"></TodoSummuryVue>                
   </div>
 
 </template>

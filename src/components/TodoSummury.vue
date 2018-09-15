@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div id="summary_container">
         <div>요약</div>
-        <div>{{getFinishedCount}}</div>
-        <div>{{getNotFinishedCount}}</div>
+        <span>Finished : {{getFinishedCount}}</span>
+        <span>NotFinished : {{getNotFinishedCount}}</span>
     </div>
 </template>
 
@@ -15,12 +15,13 @@
         },
         computed : {
             getFinishedCount : function (){
-                return list.filter((i)=>{
+                console.log(this.list)
+                return this.list.filter((i)=>{
                     return i.isFinished;
                 }).length;
             },
             getNotFinishedCount : function (){
-                return list.filter((i)=>{
+                return this.list.filter((i)=>{
                     return !i.isFinished;
                 }).length;
             }

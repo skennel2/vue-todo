@@ -62,7 +62,8 @@
                     if(this.editValue != this.todoItem.todo){
                         this.$emit('onChangeValue', this.index, this.todoItem, {
                             todo : this.editValue,
-                            createdDate : new Date()
+                            createdDate : new Date(),
+                            isFinished : this.isFinished
                         });
                     }
                 }

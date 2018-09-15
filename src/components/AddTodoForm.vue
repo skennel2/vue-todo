@@ -24,7 +24,7 @@
                     var newTodoObj = {                        
                         todo : this.newTodo,
                         createdDate : new Date(),
-                        isSuccess : false
+                        isFinished : false
                     };
 
                     this.$emit('addTodo', newTodoObj)
