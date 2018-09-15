@@ -9,21 +9,21 @@
 <script>
     export default {
         props : {
-            list : {
+            todoList : {
                 type : Array                
             }
         },
         computed : {
             getTotalCount : function(){
-                return this.list.length;
+                return this.todoList.length;
             },
             getFinishedCount : function (){
-                return this.list.filter((i)=>{
+                return this.todoList.filter((i)=>{
                     return i.isFinished;
                 }).length;
             },
             getNotFinishedCount : function (){
-                return this.list.filter((i)=>{
+                return this.todoList.filter((i)=>{
                     return !i.isFinished;
                 }).length;
             }

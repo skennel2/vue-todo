@@ -17,7 +17,7 @@
 
     export default {
         props : {
-            list : {
+            todoList : {
                 type : Array                
             }
         },    
