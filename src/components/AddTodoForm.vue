@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="input-group">
-            <input type="text" v-model="newTodo" class="form-control" />
+            <input type="text" v-model="newTodo" class="form-control" v-on:keyup.enter="addTodo"/>
 
             <span class="input-group-btn">
                 <button @click="addTodo" class="btn btn-primary">add</button>
@@ -23,7 +23,7 @@
                 if(this.newTodo.length != 0){
                     var newTodoObj = {                        
                         todo : this.newTodo,
-                        createdDate : new Date(),
+                        modifiedDate : new Date(),
                         isFinished : false
                     };
 
