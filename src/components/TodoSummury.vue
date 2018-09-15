@@ -1,5 +1,7 @@
 <template>
-    
+    <div>
+
+    </div>
 </template>
 
 <script>
@@ -8,7 +10,8 @@
             list : {
                 type : Array                
             }
-        },    
+        },
+            
     }
 </script>
 
