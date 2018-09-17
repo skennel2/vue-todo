@@ -49,7 +49,7 @@
             toggleFinish : function(){
                 this.isFinished = !this.isFinished;
 
-                var tempTodoItem = this.todoItem;
+                let tempTodoItem = this.todoItem;
                 tempTodoItem.todo = this.editValue,
                 tempTodoItem.isFinished = this.isFinished;
                 tempTodoItem.modifiedDate = new Date();

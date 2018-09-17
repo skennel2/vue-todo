@@ -36,7 +36,7 @@
         this.todoList.splice(idx, 1);
       },
       changeTodo : function(idx, oldObject, newObject){
-        var original = this.todoList[idx];
+        let original = this.todoList[idx];
         original.todo = newObject.todo;
         original.modifiedDate = newObject.modifiedDate;
         original.isFinished = newObject.isFinished;
