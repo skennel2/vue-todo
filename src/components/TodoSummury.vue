@@ -1,8 +1,8 @@
 <template>
     <div id="summary_container">
-        <a href="#">Total <span class="badge">{{getTotalCount}}</span></a>
-        <a href="#">Finished <span class="badge">{{getFinishedCount}}</span></a>
-        <a href="#">NotFinished <span class="badge">{{getNotFinishedCount}}</span></a>
+        <div href="#">Total <span class="badge">{{getTotalCount}}</span></div>
+        <div href="#">Finished <span class="badge">{{getFinishedCount}}</span></div>
+        <div href="#">NotFinished <span class="badge">{{getNotFinishedCount}}</span></div>
     </div>
 </template>
 
