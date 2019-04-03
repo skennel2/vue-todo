@@ -1,8 +1,8 @@
 <template>
     <div class="row">
         <div>
-            <span class="glyphicon" 
-                  v-bind:class = "{'glyphicon-ok finished' : isFinished, 'glyphicon-minus notFinished' : !isFinished}"
+            <span class="glyphicon glyphicon-ok" 
+                  v-bind:class = "{'finished' : isFinished, 'notFinished' : !isFinished}"
                   aria-hidden="true" 
                   @click="toggleFinish"></span>    
             <span v-show="!isEditMode" @click="setEditMode">
@@ -49,7 +49,7 @@
             toggleFinish : function(){
                 this.isFinished = !this.isFinished;
 
-                var tempTodoItem = this.todoItem;
+                let tempTodoItem = this.todoItem;
                 tempTodoItem.todo = this.editValue,
                 tempTodoItem.isFinished = this.isFinished;
                 tempTodoItem.modifiedDate = new Date();

@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "eslint": "^5.5.0",
+    "npm": "^6.4.1",
     "vue": "^2.5.11"
   },
   "browserslist": [
